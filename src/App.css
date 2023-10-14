@@ -6,6 +6,7 @@
   border-radius: .4rem;
   border: 1px solid #ffffff29;
   background: #00000038;
+  box-shadow: 0px 6px 18px 0px #0000003a;
 }
 
 .logo {
@@ -19,19 +20,20 @@
 }
 .primary{
   background-color: hsl(209, 100%, 48%);
-  box-shadow: 0px 11px 12px hsl(209deg 100% 50% / 22%);
+  box-shadow: 0px 6px 12px hsl(209deg 100% 50% / 22%);
 
 }
 .primary:hover, .primary:focus{
   background-color: #42a0f8;
-  box-shadow: 0px 11px 16px hsl(209deg 100% 50% / 42%)
+  box-shadow: 0px 8px 16px hsl(209deg 100% 50% / 42%)
 }
 .secondary{
-  background-color: rgb(255, 62, 62);
-  box-shadow: 0px 11px 12px #ff00001c;
+  background-color: rgb(255 61 61);
+  box-shadow: 0px 6px 12px #ff00001c;
 }
 .secondary:hover, .secondary:focus{
-  box-shadow: 0px 11px 16px #ff00003d;
+  background-color: rgb(247, 98, 98);
+  box-shadow: 0px 8px 16px #ff22223d;
 }
 .Content-Area{
 display: flex;
@@ -60,6 +62,13 @@ justify-content: space-between;
 }
 
 
+header {
+  padding-block: .5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.144);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -81,4 +90,8 @@ justify-content: space-between;
 
 .read-the-docs {
   color: #888;
+}
+
+@media (prefers-color-scheme: light) {
+  
 }

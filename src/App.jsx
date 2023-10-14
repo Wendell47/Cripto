@@ -70,7 +70,14 @@ function App() {
   
   return (
     <>
+      <header>
       <h1>Cripto  </h1>
+        <ul>
+          <li>
+            <a href="#">sobre</a>
+          </li>
+          </ul>
+      </header>
      
       <div className='Content-Area'>
           <div>

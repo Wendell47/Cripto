@@ -5,8 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,13 +15,19 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #ffffff;
   text-decoration: inherit;
+  text-decoration: none;
 }
 a:hover {
   color: #535bf2;
 }
 
+ul{
+  list-style: none;
+  display: flex;
+  gap: .2rem;
+}
 body {
   margin: 0;
   display: flex;
@@ -96,14 +101,26 @@ button:disabled{
 
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+ 
+  body {
+    background: rgb(202, 202, 202);
+    background: linear-gradient(47deg, rgb(79 55 102) 0%, rgb(236 184 166) 82%);
   }
-  a:hover {
-    color: #747bff;
+  #root {
+    border-color: #ffffff1c;
+    background: #ffffff30;
+    box-shadow: 0px 6px 18px 0px #4600000f;
   }
-  button {
-    background-color: #f9f9f9;
+  p{
+    color: #f3f3f3;
+  }
+  
+  input::placeholder,textarea::placeholder{
+    color: rgba(255, 255, 255, 0.493);
+  }
+  input,textarea{
+  
+  border:1px solid #ffffff1c;
+  background:rgb(255 255 255 / 21%);
   }
 }
