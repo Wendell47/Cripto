@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import '../styles/App.css'
 import CryptoJS from 'crypto-js'
 
 function App() {
@@ -17,7 +17,6 @@ function App() {
   const encryptMessage = () => {
     const encrypted = CryptoJS.AES.encrypt(messageToEncrypt, secretKey).toString();
     setEncryptedMessage(encrypted);
-    setSecretKey('')
   };
 
   const decryptMessage = () => {
@@ -38,6 +37,11 @@ function App() {
   function cleanInput(inputName){
     if (inputName == 'clean_Message_input'){
       setMessageToEncrypt('')
+      setSecretKey('')
+    }
+    if (inputName == 'clean_Message_input_secondary'){
+      setMessageToDecrypt('')
+      setSecretKeyToDecrypt('')
     }
   }
   
@@ -70,20 +74,12 @@ function App() {
   
   return (
     <>
-      <header>
-      <h1>Cripto  </h1>
-        <ul>
-          <li>
-            <a href="#">sobre</a>
-          </li>
-          </ul>
-      </header>
      
       <div className='Content-Area'>
           <div>
               <label  htmlFor='input_message_Encrypt'>
 
-                <p>Mensagem que você quer criptografar:</p>
+                <p>Mensagem a ser criptografada:</p>
                 <textarea 
                 value={messageToEncrypt}
                 placeholder='Digite sua mensagem aqui'
@@ -99,11 +95,11 @@ function App() {
               </label>
               
               <div className='buttons_area'>
-              <button className='btn secondary'  id="clean_Message_input" onClick={() =>{cleanInput('clean_Message_input')}}>Limpar</button>
+              <button className='btn secondary'  id="clean_Message_input" onClick={() =>{cleanInput('clean_Message_input')}}>Limpar tudo</button>
               <button className='btn primary' onClick={encryptMessage} disabled={isDisabled}>Criptografar</button>
               </div>
               <p>Mensagem criptografada:</p>
-              <input 
+              <textarea 
               value={encryptedMessage} 
               onClick={copyMessage} 
               placeholder='A mensagem criptografada aparecerá aqui.'
@@ -120,7 +116,9 @@ function App() {
                 onChange={e => setMessageToDecrypt(e.target.value)} 
                 id='input_message_Decrypt'/>
                 <p> Chave para a Descriptografia:</p>
-                 <input type='text' 
+                 <input 
+                 type='text'
+                 value={secretKeyToDecrypt} 
                 onChange={e => setSecretKeyToDecrypt(e.target.value)}
                 placeholder='Insira a mesma chave utilizada para criptografia.'
                 />
@@ -128,13 +126,14 @@ function App() {
               </label>
               
               <div className='buttons_area'>
-              <button className='btn secondary'  id="clean_Message_input" 
-              onClick={() =>{cleanInput('clean_Message_input')}}
-              >Limpar</button>
+              <button className='btn secondary'  id="clean_Message_input_secondary" 
+              onClick={() =>{cleanInput('clean_Message_input_secondary')}}
+              >Limpar tudo</button>
               <button className='btn primary' onClick={decryptMessage} disabled={isDisabledSecondary}>Descriptografar</button>
               </div>
               <p>Mensagem descriptografada:</p>
-              <input 
+              <textarea 
+              type='text'
               className={fail} 
               value={decryptedMessage} 
               onClick={copyMessage}
