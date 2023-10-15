@@ -1,4 +1,4 @@
-
+import {AiFillGithub} from "react-icons/ai"
 export default function About(){
 
     return(
@@ -17,6 +17,12 @@ export default function About(){
                 O algoritmo AES é capaz de usar chaves criptográficas de 128, 192 e 256 bits para criptografar e descriptografar dados em blocos de 128 bits.” – NIST
 
             </p>
+
+            <ul>
+                <li>
+                    <a href="https://github.com/Wendell47"><AiFillGithub/></a>
+                </li>
+                </ul>
         </div>
         </>
     )

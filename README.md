@@ -1,8 +1,14 @@
-# React + Vite
+# Cripto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O Cript é um pequeno projeto desenvolvido visando mostrar o funcionamento da criptografia e descriptografia de uma menssagem atráves do método AES(Advanced Encryption Standard). O algoritmo AES é uma cifra de bloco simétrico que pode criptografar (codificar) e descriptografar (decifrar) informações.
 
-Currently, two official plugins are available:
+A criptografia converte os dados em uma forma ininteligível chamada texto cifrado. Ao descriptografar o texto cifrado, é convertido os dados de volta em sua forma original, chamada de texto simples.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"O algoritmo AES é capaz de usar chaves criptográficas de 128, 192 e 256 bits para criptografar e descriptografar dados em blocos de 128 bits.” – NIST
+
+stack utilizadas:
+
+- crypto-js
+- react-router-dom
+- react-icons
+

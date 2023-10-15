@@ -4,6 +4,7 @@ import {LuMenu, LuHome, LuInfo} from 'react-icons/lu'
 import { useState } from 'react';
 
 export default function Header(){
+    
     const [active, setActive] = useState('hide')
 
     function handleActive(e){
@@ -16,6 +17,7 @@ export default function Header(){
         const item = document.getElementById(e)
         item.classList.add('active')
 
+        
         
     }
 

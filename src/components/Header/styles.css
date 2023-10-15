@@ -23,9 +23,8 @@ background: rgba(255, 255, 255, 0.096);
 }
 
 .MenuMobileActive{
-display: none;
-cursor: pointer;
-font-size: 1.4rem;
+    display: none;
+    cursor: pointer;
 }
 
 .hide{
@@ -45,6 +44,25 @@ display: none;
     padding: 1rem;
 }
 
+::-webkit-scrollbar-track{
+    
+    background: transparent;
+}
+
+::-webkit-scrollbar {
+    width: clamp(2px, 5vw + 1px, 4px);
+    background: transparent;
+    
+}
+::-webkit-scrollbar-corner {
+    background-color: #00000086;
+    height:20px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 30pc;
+    background: rgba(255, 255, 255, 0.521);
+    border: 1px solid rgba(255, 255, 255, 0.459);
+}
 @media (max-width:750px){
     
     

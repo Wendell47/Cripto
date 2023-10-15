@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -6,6 +9,11 @@
   color-scheme: light dark;
   color: white;
   
+  --background-gradient-theme:linear-gradient(47deg, rgb(10 0 29) 0%, rgb(42 0 0) 82%);
+  --background-color-theme: #00000038;
+  --border-color-theme:#ffffff29;
+  --box-shadow-theme: 0px 6px 18px 0px #0000003a;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -13,22 +21,42 @@
   -webkit-text-size-adjust: 100%;
 }
 
+#root {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: .4rem;
+  border: 1px solid var(--border-color-theme);
+  background: var(--background-color-theme);
+  box-shadow: var(--box-shadow-theme);
+}
 
 ul{
   list-style: none;
   display: flex;
   gap: .5rem;
+  padding: 0;
 }
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
-  min-height: 100vh;
-  background: rgb(14, 14, 14);
-  background: linear-gradient(47deg, rgb(10 0 29) 0%, rgb(42 0 0) 82%)
+  height: 100vh;
+  background: transparent;
+  padding-inline:.2rem ;
 }
-
+.Container{
+    width: 100%;
+    height: 100%;
+    padding-inline: .2rem;
+    overflow-y: auto;
+    display: flex;
+    place-items: center;
+}
+html{
+  background: rgb(14, 14, 14);
+  background: var(--background-gradient-theme);
+}
 h1 {
   font-size: 3.2em;
   line-height: 1;
@@ -42,8 +70,8 @@ all: unset;
 height: 40px;
 padding: .4rem;
 color: white;
-border:1px solid #ffffff29;
-background: rgba(0, 0, 0, 0.212);
+border:1px solid var(--border-color-theme);
+background: var(--background-color-theme);
 border-radius: .4rem;
 }
 textarea{
@@ -90,32 +118,39 @@ button:disabled{
   cursor: not-allowed;
 }
 
+@media (max-width: 1660px) {
+.Container{
+  display: block;
+}
+body{
+  background: var(--background-color-theme);
+}
+#root{
+  box-shadow: none !important;
+  border: none;
+  background: none;
+}
+}
 
 @media (prefers-color-scheme: light) {
- :root{
-  color: black;
- }
-  body {
-    background: rgb(202, 202, 202);
-    background: linear-gradient(47deg, rgb(79 55 102) 0%, rgb(236 184 166) 82%);
-  }
+:root{
+color: black;
+--background-color-theme: #ffffff36;
+--border-color-theme:#ffffff1c;
+--box-shadow-theme: 0px 6px 18px 0px #4600000f;
+--background-gradient-theme:linear-gradient(47deg, rgb(79 55 102) 0%, rgb(236 184 166) 82%);	
+}
 
-  #root {
-    border-color: #ffffff1c !important;
-    background: #ffffff36 !important;
-    box-shadow: 0px 6px 18px 0px #4600000f !important;
-  }
-  p{
-    color: #1f1f1f;
-  }
+p{
+  color: #1f1f1f;
+}
   
-  input::placeholder,textarea::placeholder{
-    color: rgba(19, 19, 19, 0.493);
-  }
+input::placeholder,textarea::placeholder{
+  color: rgba(19, 19, 19, 0.493);
+}
 
-  input,textarea{
-  color: black;
-  border:1px solid #ffffff1c;
-  background:rgba(255, 255, 255, 0.144);
-  }
+input,textarea{
+color: black;
+
+}
 }

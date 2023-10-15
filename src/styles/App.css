@@ -1,13 +1,4 @@
-#root {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  border-radius: .4rem;
-  border: 1px solid #ffffff29;
-  background: #00000038;
-  box-shadow: 0px 6px 18px 0px #0000003a;
-}
+
 
 .logo {
   height: 6em;
@@ -72,13 +63,9 @@ header {
   align-items: center;
 }
 
-
-
 .card {
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
-}
+
 
