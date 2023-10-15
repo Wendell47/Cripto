@@ -82,9 +82,15 @@ textarea{
 }
 input.error,textarea.error{
   color: red;
-  border:1px solid #f000008a;
-
+  border-color: #f000008a;
+  background-color: #f000001e;
 }
+input.success,textarea.success {
+  color: #30f000;
+  border-color: #30f0008a;
+  background-color: #30f0001e;
+}
+
 label{
   display: flex;
   flex-direction: column;

@@ -80,6 +80,7 @@ display: none;
         display: none;
       }
 }
+
 @media (prefers-color-scheme: light) {
     a.active{
         color: black;

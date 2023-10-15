@@ -14,24 +14,38 @@ function App() {
   const [fail, setFail] = useState('');
   
 
-  const encryptMessage = () => {
+  function getInputResult(id,result){
+    const inputResult = document.getElementById(id)
+
+    if (result == '') {
+      if (inputResult.classList.contains('success')){
+        inputResult.classList.remove('success')
+      }
+      inputResult.classList.add('error')
+      console.log('passou')
+       
+      return "Error: Failed to decrypt - a chave e/ou a mensagem está errada." 
+    }
+    if (inputResult.classList.contains("error")) {
+      inputResult.classList.remove('error')
+    }
+    if (id){
+      const item = document.getElementById(id)
+      item.classList.add('success')
+
+    }
+    return result
+  }
+  const encryptMessage = (inputId) => {
     const encrypted = CryptoJS.AES.encrypt(messageToEncrypt, secretKey).toString();
-    setEncryptedMessage(encrypted);
+    setEncryptedMessage(getInputResult(inputId,encrypted));
   };
 
-  const decryptMessage = () => {
+  const decryptMessage = (inputId) => {
     const bytes = CryptoJS.AES.decrypt(messageToDecrypt, secretKeyToDecrypt);
     const originalText = bytes.toString(CryptoJS.enc.Utf8);
-    if (originalText == '') {
-      setFail('error')
-      setDecryptedMessage("Error: Failed to decrypt - a chave e/ou a mensagem está errada.");
-      return
-    }
-    if (fail){
-      setFail('')
-    }
-    setDecryptedMessage(originalText);
-    console.log(originalText)
+    
+    setDecryptedMessage(getInputResult(inputId, originalText));
   };
 
   function cleanInput(inputName){
@@ -89,17 +103,18 @@ function App() {
                 <input type='text'
                 value={secretKey}
                 onChange={e => setSecretKey(e.target.value)}
-                placeholder='exemplo: K4UIR3a8I/Yc-HI6A-II9pi!8=0xUbyAF9/2gHbAKRoYczYUykkfQw!XjaIh!Qta5-OR0KFInpqtk3FK/F37RT?oVy8qv-frwg?mG0Q8ZZnKdQF6bmr-F?FTTB7kt-Nc'
+                placeholder='exemplo: K4UIR3a8I/Yc-HI6A-II9pi!8=0xUbyAF9/2gHbAKRoYczYUykkfQw!XjaIh!Qta5-OR0KFInpqtk3FK'
                 />
 
               </label>
               
               <div className='buttons_area'>
               <button className='btn secondary'  id="clean_Message_input" onClick={() =>{cleanInput('clean_Message_input')}}>Limpar tudo</button>
-              <button className='btn primary' onClick={encryptMessage} disabled={isDisabled}>Criptografar</button>
+              <button className='btn primary' onClick={() => encryptMessage('input_Encrypt_result')} disabled={isDisabled}>Criptografar</button>
               </div>
               <p>Mensagem criptografada:</p>
-              <textarea 
+              <textarea
+              id='input_Encrypt_result'
               value={encryptedMessage} 
               onClick={copyMessage} 
               placeholder='A mensagem criptografada aparecerá aqui.'
@@ -130,12 +145,12 @@ function App() {
               <button className='btn secondary'  id="clean_Message_input_secondary" 
               onClick={() =>{cleanInput('clean_Message_input_secondary')}}
               >Limpar tudo</button>
-              <button className='btn primary' onClick={decryptMessage} disabled={isDisabledSecondary}>Descriptografar</button>
+              <button className='btn primary' onClick={() =>decryptMessage('input_Decrypt_result')} disabled={isDisabledSecondary}>Descriptografar</button>
               </div>
               <p>Mensagem descriptografada:</p>
               <textarea 
               type='text'
-              className={fail} 
+              id="input_Decrypt_result"
               value={decryptedMessage} 
               onClick={copyMessage}
               placeholder='A mensagem descriptografada aparecerá aqui.'
