@@ -90,17 +90,7 @@ label{
   flex-direction: column;
   gap: 1rem;
 }
-span{
-  color: white; 
-  display: block;
-  padding: 1rem; 
-  background: #3d3d3d;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
-div > span:first-of-type{
-  margin-bottom: 2rem;
-}
+
 button {
   all: unset;
   border: 1px solid transparent;

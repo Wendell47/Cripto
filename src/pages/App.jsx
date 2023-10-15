@@ -106,6 +106,7 @@ function App() {
               readOnly/>
             
           </div>
+          <span className='line_divisor'></span>
           <div>
           <label  htmlFor='input_message_Decrypt'>
 
