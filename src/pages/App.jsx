@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import '../styles/App.css'
 import CryptoJS from 'crypto-js'
+import { HiArrowPath } from 'react-icons/hi2';
 
 function App() {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -11,7 +12,6 @@ function App() {
   const [secretKeyToDecrypt, setSecretKeyToDecrypt] = useState('');
   const [encryptedMessage, setEncryptedMessage] = useState('');
   const [decryptedMessage, setDecryptedMessage] = useState('');
-  const [fail, setFail] = useState('');
   
 
   function getInputResult(id,result){
@@ -64,6 +64,15 @@ function App() {
     document.execCommand('copy');
   };
 
+
+  function generateRandomKey(){
+   // let chave = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + + Math.random().toString(36).substring(2, 15)
+    let chave = '';
+    for(let i = 0; i < 32; i++) {
+        chave += Math.floor(Math.random() * 16).toString(16);
+    }
+    setSecretKey(chave)
+  }
  
   useEffect(() => {
     if (messageToEncrypt && secretKey){
@@ -100,12 +109,14 @@ function App() {
                 onChange={e => setMessageToEncrypt(e.target.value)} 
                 id='input_message_Encrypt'/>
                 <p> Chave para a criptografia:</p>
+                <div className='input_key_wrapper'>
                 <input type='text'
                 value={secretKey}
                 onChange={e => setSecretKey(e.target.value)}
                 placeholder='exemplo: K4UIR3a8I/Yc-HI6A-II9pi!8=0xUbyAF9/2gHbAKRoYczYUykkfQw!XjaIh!Qta5-OR0KFInpqtk3FK'
                 />
-
+                <span className='random_key_btn' onClick={generateRandomKey}><HiArrowPath/></span>
+                </div>
               </label>
               
               <div className='buttons_area'>

@@ -114,6 +114,27 @@ button:disabled{
   cursor: not-allowed;
 }
 
+::-webkit-scrollbar-track{
+    
+  background: transparent;
+}
+
+::-webkit-scrollbar {
+  width: clamp(2px, 5vw + 1px, 4px);
+  background: transparent;
+  
+}
+::-webkit-scrollbar-corner {
+  background-color: #000000ee;
+  height:20px;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 30pc;
+  background: var(--background-color-theme);
+  border: 1px solid var(--border-color-theme);
+}
+
+
 @media (max-width: 1660px) {
 .Container{
   display: block;
