@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom'
 import './styles.css';
-import {LuMenu, LuHome, LuInfo} from 'react-icons/lu' 
+import { LuHome, LuInfo,} from 'react-icons/lu' 
+import {BiDotsVerticalRounded} from 'react-icons/bi'
 import { useState } from 'react';
 
 export default function Header(){
-    
+
     const [active, setActive] = useState('hide')
 
     function handleActive(e){
@@ -38,7 +39,7 @@ export default function Header(){
                 </ul>
 
                 <div className='MenuMobileActive' onClick={() => handleActiveMenuMobile()}>
-                    <LuMenu/>
+                    <BiDotsVerticalRounded/>
                     <div className={`MenuMobile ${active}`}>
                     <ul>
                     <li>
