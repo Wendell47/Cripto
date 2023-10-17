@@ -21,41 +21,54 @@ export default function Header(){
         }
         links.forEach(activeLink)
     }
+
     useEffect(() => {
         const url = location.pathname
         handleActive(url)
     },[])
-    
-    //links.forEach(ativarLink)
-    
+
     function handleActiveMenuMobile(){
         active ? setActive('') : setActive('hide');
     }
+
+    const menuItens = [
+        {
+            url:"/",
+            title:"Início",
+            icon: <LuHome/>
+        },
+        {
+            url:"/sobre",
+            title:"Sobre",
+            icon: <LuInfo/>
+        }
+    ]
+   
     return(
         <header>
             <h1>Cripto</h1>
                 <ul className='Menu'>
-                <li>
-                    <Link to={"/"}  onClick={() => handleActive('/')}><LuHome/> Início</Link>
-                </li>
-                <li>
-                    <Link to={"/sobre"} onClick={() => handleActive('/sobre')}><LuInfo/> sobre</Link>
-                </li>
-               
+                    {
+                        menuItens.map((item,index) =>(
+                            <li key={index}>
+                                <Link to={item.url} onClick={() => handleActive(item.url)}>{item.icon}{item.title}</Link>
+                            </li>
+                        ))
+                    }
                 </ul>
 
                 <div className='MenuMobileActive' onClick={() => handleActiveMenuMobile()}>
                     <BiDotsVerticalRounded/>
                     <div className={`MenuMobile ${active}`}>
-                    <ul>
-                    <li>
-                        <Link to={"/"} onClick={() => handleActive('home')}><LuHome/> Início</Link>
-                    </li>
-                    <li>
-                        <Link to={"/sobre"} onClick={() => handleActive('about')}><LuInfo/> sobre</Link>
-                    </li>
-                
-                    </ul>
+                        <ul>
+                            {
+                                menuItens.map((item,index) =>(
+                                    <li key={index}>
+                                        <Link to={item.url} onClick={() => handleActive(item.url)}>{item.icon}{item.title}</Link>
+                                    </li>
+                                ))
+                            }
+                        </ul>
                 </div>
                 </div>
              

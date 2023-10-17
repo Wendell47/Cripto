@@ -80,7 +80,7 @@ header {
   width: 40px;
   border-radius: .3rem ;
   margin: .3rem;
-  background: rgba(0, 0, 0, 0.055);
+  background: var(--background-color-theme);
  color: rgba(255, 255, 255, 0.301);
  border: 1px solid var(--border-color-theme);
   backdrop-filter: blur(5px);
@@ -89,8 +89,11 @@ header {
 .random_key_btn,.random_key_btn svg{
   transition: all 150ms;
 }
+.random_key_btn.animation svg{
+  animation: rotate 180ms linear forwards;
+}
 .random_key_btn:hover{
-  background: rgba(255, 255, 255, 0.253);
+  background: var(--background-color-theme),;
  color: rgba(255, 255, 255, 0.486);
 }
 .random_key_btn:hover svg{
@@ -99,7 +102,28 @@ header {
 .card {
   padding: 2em;
 }
-
+.textarea_wrapper{
+  display: grid;
+  position: relative
+  ;
+}
+.copy_alert{
+  inset: 0;
+  position: absolute;
+  backdrop-filter: blur(15px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 80ms ease-in;
+  margin: 6px;
+    display: grid;
+    border-radius: .3rem;
+    place-content: center;
+    background: #00140b85;
+}
+.copy_alert.active{
+  visibility: visible;
+  opacity: 1;
+}
 .line_divisor{
     width: 1px;
     display: block;
@@ -122,5 +146,18 @@ header {
   }
   #root{
     padding: 1rem;
+  }
+}
+
+@keyframes rotate {
+  0%{
+    rotate: 0;
+  }
+  80%{
+    rotate: 180deg;
+  }
+
+  100%{
+    rotate: 360deg;
   }
 }
