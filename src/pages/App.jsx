@@ -13,7 +13,7 @@ function App() {
   const [encryptedMessage, setEncryptedMessage] = useState('');
   const [decryptedMessage, setDecryptedMessage] = useState('');
   
-
+ 
   function getInputResult(id,result){
     const inputResult = document.getElementById(id)
 
@@ -54,9 +54,10 @@ function App() {
       setSecretKeyToDecrypt('')
     }
   }
-  
+
     function copyMessage(id,text){
-    if (text !== ''){
+      
+    if (text !== '' && !text.includes('err')){
       const copyDiv = document.querySelector(`#${id} .copy_alert`)
     copyDiv.classList.add('active');
     setTimeout(() => {copyDiv.classList.remove('active')},580)
