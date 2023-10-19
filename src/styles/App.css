@@ -1,5 +1,8 @@
 
+*{
+  margin:0;
 
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -61,14 +64,6 @@ justify-content: space-between;
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-
-header {
-  padding-block: .5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.144);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .random_key_btn{
   position: absolute;
   display: inline-flex;
@@ -131,6 +126,9 @@ header {
     background: var(--border-color-theme);
 }
 
+.about,.Content-Area{
+  animation: transition 180ms ease-in-out;
+}
 @media (max-width: 749px){
  
   .line_divisor{
@@ -147,6 +145,7 @@ header {
   }
   #root{
     padding: 1rem;
+    padding-top: 2rem;
   }
 }
 
