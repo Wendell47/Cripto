@@ -110,6 +110,7 @@ header {
 .copy_alert{
   inset: 0;
   position: absolute;
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   opacity: 0;
   visibility: hidden;
@@ -159,5 +160,16 @@ header {
 
   100%{
     rotate: 360deg;
+  }
+}
+
+@keyframes transition {
+  0%{
+    opacity: 0;
+    transform: translateY(81px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
   }
 }
