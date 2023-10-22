@@ -77,12 +77,16 @@ color: white;
 border:1px solid var(--border-color-theme);
 background: var(--background-color-theme);
 border-radius: .4rem;
+transition:140ms ease-out;
 }
 textarea{
   display: flex;
   flex-direction: column;
   min-height: 100px;  
   word-wrap: break-word;
+}
+input:hover, textarea:hover{
+  border-color: rgba(255, 255, 255, 0.507);
 }
 input:focus-visible,textarea:focus-visible{
 border-color: var(--border-color-theme-hover-focus);
@@ -102,7 +106,7 @@ input.success,textarea.success {
 label{
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 button {
