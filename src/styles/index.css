@@ -113,8 +113,6 @@ button {
   all: unset;
   border: 1px solid transparent;
   border-radius: .5rem;
-  height: 40px;
-  padding-inline: 1rem;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;

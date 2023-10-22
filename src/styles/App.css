@@ -9,31 +9,6 @@
   will-change: filter;
   transition: filter 300ms;
 }
-.btn{
-  transition: all 140ms;
-}
-.primary{
-  color: white;
-  background-color: hsl(209, 100%, 48%);
-  box-shadow: 0px 6px 12px hsl(209deg 100% 50% / 22%);
-
-}
-.primary:hover, .primary:focus{
-  background-color: #42a0f8;
-  box-shadow: 0px 8px 16px hsl(209deg 100% 50% / 42%)
-}
-.primary:focus-visible,.secondary:focus-visible{
-  border:1px solid rgba(255, 255, 255, 0.61);
-}
-.secondary{
-  color: white;
-  background-color: rgb(255 61 61);
-  box-shadow: 0px 6px 12px #ff00001c;
-}
-.secondary:hover, .secondary:focus{
-  background-color: rgb(247, 98, 98);
-  box-shadow: 0px 8px 16px #ff22223d;
-}
 .Content-Area{
 display: flex;
 flex-wrap: wrap;
@@ -67,43 +42,7 @@ justify-content: space-between;
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.random_key_btn{
-  position: absolute;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4rem;
-  right: 0;
-  inset-block: 0;
-  width: 40px;
-  border-radius: .3rem ;
-  margin: .3rem;
-  background: transparent;
- color: rgba(255, 255, 255, 0.301);
- /*border: 1px solid var(--border-color-theme);*/
-  backdrop-filter: blur(85px);
-  cursor: pointer;
-}
-.random_key_btn,.random_key_btn svg{
-  transition: all 150ms; 
-}
 
-.flex-bottom{
-  inset-block-start: 62px;
-}
-.random_key_btn.animation svg{
-  animation: rotate 180ms linear forwards;
-}
-.random_key_btn.animation2 svg{
-  animation: Highlights-Random-button  600ms ease-out 600ms reverse;
-}
-.input_key_wrapper:hover .random_key_btn, .random_key_btn:hover, input:focus-visible .random_key_btn, .textarea_wrapper:hover .random_key_btn{
-  background: rgb(0 126 245);
-  color: rgba(255, 255, 255, 0.486);
-}
-.random_key_btn:hover svg{
-  rotate: 10deg;
-}
 .card {
   padding: 2em;
 }
@@ -202,23 +141,4 @@ justify-content: space-between;
 }
 .transition_icon_hide{
   animation: transition_icon_hide 380ms 40ms  linear ; 
-}
-@keyframes Highlights-Random-button {
-  0%{rotate:  0deg;}
-  30%{rotate: 40deg;}
-  50%{rotate: 0deg;}
-  70%{rotate: 40deg;}
-  100%{rotate:0deg;}
-}
-@keyframes transition_icon {
-  0%{transform: scale(1.0); opacity: 1;}
-  20%{transform: scale(0.4);opacity: 0;}
-  80%{transform: scale(0.4);opacity: 0;}
-  100%{transform: scale(1); opacity: 1;}
-}
-@keyframes transition_icon_hide {
-  0%{  transform: scale(0.4);opacity: 0;}
-  20%{ transform: scale(1);  opacity: 1;}
-  80%{ transform: scale(1);  opacity: 1;}
-  100%{transform: scale(0.4);opacity: 0;}
 }
