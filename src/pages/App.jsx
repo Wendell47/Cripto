@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import '../styles/App.css'
 import CryptoJS from 'crypto-js'
-import { HiArrowPath } from 'react-icons/hi2';
+import { HiArrowPath, HiClipboard, HiClipboardDocument, HiCheckCircle } from 'react-icons/hi2';
 
 function App() {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -58,13 +58,19 @@ function App() {
     function copyMessage(id,text){
       
     if (text !== '' && !text.includes('err')){
-      const copyDiv = document.querySelector(`#${id} .copy_alert`)
-    copyDiv.classList.add('active');
-    setTimeout(() => {copyDiv.classList.remove('active')},580)
+      
+      const icon_copy = document.querySelector(`#${id} .icons_copy_wrapper svg:first-child`)
+      const icon_check = document.querySelector(`#${id} .icons_copy_wrapper svg:last-child`)
+      icon_copy.classList.add('transition_icon');
+      icon_check.classList.add('transition_icon_hide');
+    setTimeout(() => {
+      icon_copy.classList.remove('transition_icon');
+      icon_check.classList.remove('transition_icon_hide');
+    },480)
     navigator.clipboard.writeText(text)
     } 
-    
   }
+
 
 
   function generateRandomKey(){
@@ -79,7 +85,13 @@ function App() {
     }
     setSecretKey(chave)
   }
- 
+  
+  function pasterRandomKey(){
+    if(secretKey){
+      setSecretKeyToDecrypt(secretKey)
+    }
+  }
+
   useEffect(() => {
     if (messageToEncrypt && secretKey){
       setIsDisabled(false);
@@ -97,86 +109,115 @@ function App() {
     else{
       setIsDisabledSecondary(true)
     }
-
+    const button = document.querySelector('#paster_button');
+    if(secretKey){
+      button.classList.remove('hide')
+    }else{
+      button.classList.add('hide')
+    }
     
   },[secretKey, messageToEncrypt,messageToDecrypt,secretKeyToDecrypt])
   
+  setTimeout(()=>{
+    const animation = document.querySelector('.random_key_btn')
+    animation.classList.remove('animation2') 
+  },1800)
   return (
     <>
      
       <div className='Content-Area'>
           <div>
               <label  htmlFor='input_message_Encrypt'>
-
                 <p>Mensagem a ser criptografada:</p>
                 <textarea 
                 value={messageToEncrypt}
                 placeholder='Digite sua mensagem aqui'
                 onChange={e => setMessageToEncrypt(e.target.value)} 
-                id='input_message_Encrypt'/>
+                id='input_message_Encrypt'
+                />
+              </label>
+              <label htmlFor='input_key_Encrypt'>
                     <p> Chave para a criptografia:</p>
                     <div className='input_key_wrapper'>
-                    <input type='text'
+                    <input 
+                    id='input_key_Encrypt'
+                    type='text'
                     value={secretKey}
                     onChange={e => setSecretKey(e.target.value)}
-                    placeholder='exemplo: K4UIR3a8I/Yc-HI6A-II9pi!8=0xUbyAF9/2gHbAKRoYczYUykkfQw!XjaIh!Qta5-OR0KFInpqtk3FK'
+                    placeholder='insirá um chave ou gere uma aleatória.'
                     />
-                    <span className='random_key_btn' onClick={generateRandomKey}><HiArrowPath/></span>
+                    <span className='random_key_btn animation2' onClick={generateRandomKey}><HiArrowPath/></span>
                     </div>
               </label>
               
-              <div className='buttons_area'>
+              <div className='buttons_wrapper'>
                   <button className='btn secondary'  id="clean_Message_input" onClick={() =>{cleanInput('clean_Message_input')}}>Limpar tudo</button>
                   <button className='btn primary' onClick={() => encryptMessage('input_Encrypt_result')} disabled={isDisabled}>Criptografar</button>
               </div>
+              <label htmlFor='input_Encrypt_result'>
               <p>Mensagem criptografada:</p>
               <div className='textarea_wrapper' id='encrypted_result_wrapper'>
               <textarea
               id='input_Encrypt_result'
               value={encryptedMessage} 
-              onClick={() => copyMessage('encrypted_result_wrapper',encryptedMessage)} 
               placeholder='A mensagem criptografada aparecerá aqui.'
               readOnly></textarea>
-              <div className='copy_alert'>Copiado ✓</div>
-            </div>
+               <span className='random_key_btn flex-bottom' onClick={() => copyMessage('encrypted_result_wrapper',encryptedMessage)}>
+               <div className='icons_copy_wrapper'>
+                  <HiClipboardDocument className='copy_icon'/>
+                  <HiCheckCircle className='check_icon'/>
+               </div>
+              </span>
+              </div>
+              </label>
           </div>
           <span className='line_divisor'></span>
           <div>
           <label htmlFor='input_message_Decrypt'>
-
                 <p>Mensagem a ser descriptografada:</p>
                 <textarea 
                 value={messageToDecrypt}
                 placeholder='Insira a mensagem criptografada aqui'
                 onChange={e => setMessageToDecrypt(e.target.value)} 
                 id='input_message_Decrypt'/>
+          </label>
+          <label htmlFor='input_key_Decrypt'> 
                 <p> Chave para a Descriptografia:</p>
-                <input 
-                type='text'
-                value={secretKeyToDecrypt} 
-                onChange={e => setSecretKeyToDecrypt(e.target.value)}
-                placeholder='Insira a mesma chave utilizada para criptografia.'
-                />
-
-              </label>
+                <div className='input_key_wrapper'>
+                  <input 
+                  id='input_key_Decrypt'
+                  type='text'
+                  value={secretKeyToDecrypt} 
+                  onChange={e => setSecretKeyToDecrypt(e.target.value)}
+                  placeholder='Insira a mesma chave utilizada para criptografia.'
+                  />
+                  <span className='random_key_btn hide' id ='paster_button'onClick={pasterRandomKey}><HiClipboard/></span>
+                </div>
+          </label>
               
-              <div className='buttons_area'>
+              <div className='buttons_wrapper'>
               <button className='btn secondary'  id="clean_Message_input_secondary" 
               onClick={() =>{cleanInput('clean_Message_input_secondary')}}
               >Limpar tudo</button>
               <button className='btn primary' onClick={() =>decryptMessage('input_Decrypt_result')} disabled={isDisabledSecondary}>Descriptografar</button>
               </div>
+              <label htmlFor='input_Decrypt_result'>
               <p>Mensagem descriptografada:</p>
               <div className='textarea_wrapper' id='decrypted_result_wrapper'>
               <textarea 
               type='text'
               id="input_Decrypt_result"
               value={decryptedMessage} 
-              onClick={() => copyMessage('decrypted_result_wrapper',decryptedMessage)}
               placeholder='A mensagem descriptografada aparecerá aqui.'
               readOnly/>
-              <div className='copy_alert'>Copiado ✓</div>
+              <span className='random_key_btn flex-bottom' onClick={() => copyMessage('decrypted_result_wrapper',decryptedMessage)}>
+               <div className='icons_copy_wrapper'>
+                  <HiClipboardDocument className='copy_icon '/>
+                  <HiCheckCircle className='check_icon '/>
+               </div>
+              </span>
               </div>
+              </label>
           </div>
       </div>
     </>
