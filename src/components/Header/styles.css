@@ -1,15 +1,22 @@
 
-header{
-    margin-bottom: 1.5rem;
-}
+header {
+    padding-block-end: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.144);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
 a.active{
     color: rgb(255, 255, 255);
+    opacity: 1;
 }
 
 a  {
 font-weight: 500;
-color: #ffffff86;
-text-decoration: inherit;
+color: white;
+opacity: 0.4;
 text-decoration: none;
 display: flex;
 align-items: center;
@@ -19,7 +26,6 @@ border-radius: .3rem;
 }
 a:hover,a.active {
 background: rgba(255, 255, 255, 0.096);
-
 }
 
 .MenuMobileActive{

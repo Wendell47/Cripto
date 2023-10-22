@@ -3,7 +3,7 @@ export default function About(){
 
     return(
         <>
-        <div>
+        <div className="about">
             <h2>Sobre o projeto</h2>
             <p>
                 O Cript é um pequeno projeto desenvolvido visando mostrar o funcionamento da criptografia e descriptografia de uma menssagem atráves do  método AES(Advanced Encryption Standard).

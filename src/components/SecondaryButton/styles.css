@@ -1,0 +1,61 @@
+.secondaryButton{
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    right: 0;
+    inset-block: 0;
+    width: 40px;
+    border-radius: .3rem ;
+    margin: .3rem;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.301);
+    backdrop-filter: blur(85px);
+    cursor: pointer;
+  }
+  .secondaryButton:focus-visible{
+    border: 1px solid  rgba(255, 255, 255, 0.678);
+  }
+  .secondaryButton,.secondaryButton svg{
+    transition: all 150ms; 
+  }
+  
+  .flex-bottom{
+    inset-block-start: 62px;
+  }
+  .secondaryButton.animation svg{
+    animation: rotate 180ms linear forwards;
+  }
+  .secondaryButton.animation2 svg{
+    animation: Highlights-Random-button  600ms ease-out 600ms reverse;
+  }
+  .secondaryButton:hover, 
+  .input_key_wrapper:hover .secondaryButton, 
+  input:focus-visible .secondaryButton, 
+  .textarea_wrapper:hover .secondaryButton{
+    background: rgb(255 255 255 / 14%);
+    color: rgba(255, 255, 255, 0.486);
+  }
+  .secondaryButton:hover svg{
+    rotate: 10deg;
+  }
+  @keyframes Highlights-Random-button {
+    0%{rotate:  0deg;}
+    30%{rotate: 40deg;}
+    50%{rotate: 0deg;}
+    70%{rotate: 40deg;}
+    100%{rotate:0deg;}
+  }
+  @keyframes transition_icon {
+    0%{transform: scale(1.0); opacity: 1;}
+    20%{transform: scale(0.4);opacity: 0;}
+    80%{transform: scale(0.4);opacity: 0;}
+    100%{transform: scale(1); opacity: 1;}
+  }
+  @keyframes transition_icon_hide {
+    0%{  transform: scale(0.4);opacity: 0;}
+    20%{ transform: scale(1);  opacity: 1;}
+    80%{ transform: scale(1);  opacity: 1;}
+    100%{transform: scale(0.4);opacity: 0;}
+  }

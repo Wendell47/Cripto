@@ -10,8 +10,10 @@
   color: white;
   
   --background-gradient-theme:linear-gradient(47deg, rgb(10 0 29) 0%, rgb(42 0 0) 82%);
-  --background-color-theme: #00000038;
-  --border-color-theme:#ffffff29;
+  --background-color-theme: rgb(0 0 0 / 22%);
+  --background-color-theme-focus: hsla(206, 100%, 14%, 0.28);
+  --border-color-theme:rgba(255, 255, 255, 0.161);
+  --border-color-theme-hover-focus:rgb(112 193 255);
   --box-shadow-theme: 0px 6px 18px 0px #0000003a;
 
   font-synthesis: none;
@@ -30,6 +32,8 @@
   border: 1px solid var(--border-color-theme);
   background: var(--background-color-theme);
   box-shadow: var(--box-shadow-theme);
+
+  animation: transition 350ms ease-in-out ;
 }
 
 ul{
@@ -48,18 +52,18 @@ body {
 .Container{
     width: 100%;
     height: 100%;
-    padding-inline: .2rem;
     overflow-y: auto;
     display: flex;
     place-items: center;
 }
+
 html{
   background: rgb(14, 14, 14);
   background: var(--background-gradient-theme);
 }
 h1 {
   font-size: 3.2em;
-  line-height: 1;
+  line-height: 100%;
 }
 p{
   color: #cacaca;
@@ -73,12 +77,20 @@ color: white;
 border:1px solid var(--border-color-theme);
 background: var(--background-color-theme);
 border-radius: .4rem;
+transition:140ms ease-out;
 }
 textarea{
   display: flex;
   flex-direction: column;
   min-height: 100px;  
   word-wrap: break-word;
+}
+input:hover, textarea:hover{
+  border-color: rgba(255, 255, 255, 0.507);
+}
+input:focus-visible,textarea:focus-visible{
+border-color: var(--border-color-theme-hover-focus);
+background-color: var(--background-color-theme-focus);
 }
 input.error,textarea.error{
   color: red;
@@ -101,8 +113,6 @@ button {
   all: unset;
   border: 1px solid transparent;
   border-radius: .5rem;
-  height: 40px;
-  padding-inline: 1rem;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -114,20 +124,11 @@ button:disabled{
   cursor: not-allowed;
 }
 
-::-webkit-scrollbar-track{
-    
-  background: transparent;
-}
-
 ::-webkit-scrollbar {
   width: clamp(2px, 5vw + 1px, 4px);
   background: transparent;
-  
 }
-::-webkit-scrollbar-corner {
-  background-color: #000000ee;
-  height:20px;
-}
+
 ::-webkit-scrollbar-thumb{
   border-radius: 30pc;
   background: var(--background-color-theme);
@@ -153,7 +154,9 @@ body{
 :root{
 color: black;
 --background-color-theme: #ffffff36;
+--background-color-theme-focus: rgb(214 237 255 / 28%);
 --border-color-theme:#ffffff1c;
+--border-color-theme-hover-focus:rgb(112 193 255);
 --box-shadow-theme: 0px 6px 18px 0px #4600000f;
 --background-gradient-theme:linear-gradient(47deg, rgb(79 55 102) 0%, rgb(236 184 166) 82%);	
 }
